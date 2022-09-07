@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import iconLight from '../public/assets/logo-dark.svg';
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +12,18 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
-        <h1>My Kanban App</h1>
+      <main className='flex min-h-screen'>
+        <aside>
+          <Image src={iconLight} alt='logo' />
+        </aside>
+        <div className='flex-1 h-ful flex flex-col'>
+          <header>
+            <h1>Board Name</h1>
+          </header>
+          <section className='bg-[#F4F7FD] flex-1'>
+            <p>Board Content Here</p>
+          </section>
+        </div>
       </main>
     </div>
   );

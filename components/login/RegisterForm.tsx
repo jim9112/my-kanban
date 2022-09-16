@@ -1,5 +1,6 @@
 import useUpdateInput from '../../hooks/useUpdateInput';
 import { auth, createWithEmail } from '../../firebaseIndex';
+import { useRouter } from 'next/router';
 
 interface Iprops {
   setLogin: any;
@@ -7,6 +8,7 @@ interface Iprops {
 
 const RegisterForm = ({ setLogin }: Iprops) => {
   const { formData, updateInput } = useUpdateInput();
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const RegisterForm = ({ setLogin }: Iprops) => {
         formData.password,
         formData.nickname
       );
+      router.push('/');
     }
     console.log(formData);
   };

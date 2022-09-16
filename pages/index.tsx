@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import iconLight from '../public/assets/logo-dark.svg';
 import { auth } from '../firebaseIndex';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
@@ -25,6 +25,16 @@ const Home: NextPage = () => {
     }
   });
 
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <div>
       <Head>
@@ -38,8 +48,9 @@ const Home: NextPage = () => {
           <Image src={iconLight} alt='logo' />
         </aside>
         <div className='flex-1 h-ful flex flex-col'>
-          <header>
+          <header className='flex justify-between px-5'>
             <h1>Board Name</h1>
+            <button onClick={handleLogout}>Logout</button>
           </header>
           <section className='bg-[#F4F7FD] flex-1'>
             <p>Board Content Here</p>

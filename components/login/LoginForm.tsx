@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import useUpdateInput from '../../hooks/useUpdateInput';
 
 interface Iprops {
@@ -31,7 +30,7 @@ const LoginForm = ({ setLogin }: Iprops) => {
           required
           onChange={updateInput}
         />
-        <input type='submit' value='Register' />
+        <input type='submit' value='Login' />
       </form>
       <p>
         Don&lsquo;t have an account? Click{' '}

@@ -1,4 +1,5 @@
 import useUpdateInput from '../../hooks/useUpdateInput';
+import { auth, createWithEmail } from '../../firebaseIndex';
 
 interface Iprops {
   setLogin: any;
@@ -9,6 +10,14 @@ const RegisterForm = ({ setLogin }: Iprops) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.password === formData.password2) {
+      createWithEmail(
+        auth,
+        formData.email,
+        formData.password,
+        formData.nickname
+      );
+    }
     console.log(formData);
   };
 

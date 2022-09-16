@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      console.log('User is logged in');
+      console.log(`User is logged in: ${user.displayName}`);
       // ...
     } else {
       // User is signed out

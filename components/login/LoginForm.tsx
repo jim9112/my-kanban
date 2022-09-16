@@ -13,12 +13,14 @@ const LoginForm = ({ setLogin }: Iprops) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Check if form is filled in
     if (formData.email && formData.password) {
+      // Sign in user
       signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // ...
+          // Send user to main page
           router.push('/');
         })
         .catch((error) => {

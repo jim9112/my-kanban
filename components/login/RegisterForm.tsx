@@ -12,13 +12,16 @@ const RegisterForm = ({ setLogin }: Iprops) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Check if passwords match
     if (formData.password === formData.password2) {
+      // create new account with form data
       createWithEmail(
         auth,
         formData.email,
         formData.password,
         formData.nickname
       );
+      // Send user to the main page
       router.push('/');
     }
     console.log(formData);

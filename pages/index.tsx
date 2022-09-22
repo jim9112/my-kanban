@@ -5,17 +5,20 @@ import iconLight from '../public/assets/logo-dark.svg';
 import { auth } from '../firebaseIndex';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
   const router = useRouter();
-
+  const [currentUser, setCurrentUser] = useState<string | null>('');
+  const [uid, setUid] = useState<string | null>('');
   // Check if user is logged in
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log(`User is logged in: ${user.displayName}`);
+      setCurrentUser(user.displayName);
+      setUid(user.uid);
+      console.log(`User is logged in: ${currentUser}, ${uid}`);
       // ...
     } else {
       // User is signed out
@@ -46,6 +49,7 @@ const Home: NextPage = () => {
       <main className='flex min-h-screen'>
         <aside>
           <Image src={iconLight} alt='logo' />
+          <p>Welcome {currentUser?.toUpperCase()}!!!</p>
         </aside>
         <div className='flex-1 h-ful flex flex-col'>
           <header className='flex justify-between px-5'>
